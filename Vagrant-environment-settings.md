@@ -86,6 +86,18 @@ sudo apt-get install virtualbox virtualbox-guest-utils virtualbox-ext-pack
 
 ## 3. Vagrant
 
+### Vagrant 설치
+
+- Windows
+```
+choco install vagrant
+```
+
+- macOS
+```
+brew install vagrant
+```
+
 ### Vagrant 파일
 ```
 cd ~ 
