@@ -1,0 +1,14 @@
+- hosts: mgmt
+  vars:
+    mylist:
+      - aaa
+      - bbb
+      - ccc
+
+  tasks:
+  - debug:
+      msg: "{{ mylist[0] }}"
+  - debug:
+      msg: "{{ mylist[1] }}"
+  - debug:
+      msg: "{{ mylist[2] }}"

@@ -1,0 +1,10 @@
+- hosts: mgmt
+  vars:
+    mydict:
+      a: aaa
+      b: bbb
+  tasks:
+  - debug:
+      msg: "{{ mydict.a }}"
+  - debug:
+      msg: "{{ mydict['a'] }}"

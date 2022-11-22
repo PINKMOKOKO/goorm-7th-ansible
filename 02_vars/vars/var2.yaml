@@ -1,0 +1,11 @@
+- hosts: mgmt
+  vars:
+    pkg_name: apache2
+
+  tasks:
+  - apt:
+      name: "{{ pkg_name }}"
+      state: present
+  - service:
+      name: "{{ pkg_name }}"
+      state: started
