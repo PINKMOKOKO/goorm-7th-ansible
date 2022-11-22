@@ -1,0 +1,9 @@
+# Library: sudo apt install python3-dnspython
+
+- hosts: mgmt
+  vars:
+    google_ip: "{{ lookup('dig', 'www.google.com', qtype='A' ) }}"
+
+  tasks:
+  - debug:
+      msg: "{{ google_ip }}"

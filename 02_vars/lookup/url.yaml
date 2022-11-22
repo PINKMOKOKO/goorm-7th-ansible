@@ -1,0 +1,6 @@
+- hosts: mgmt
+  vars:
+    ip_range: "{{ lookup('url', 'https://ip-ranges.amazonaws.com/ip-ranges.json') }}"
+  tasks:
+  - debug:
+      msg: "{{ ip_range }}"

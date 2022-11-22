@@ -1,0 +1,6 @@
+- hosts: mgmt
+  vars_files:
+    - varfile.yaml
+  tasks:
+  - debug:
+      msg: "{{ myvar }}"

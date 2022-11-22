@@ -1,0 +1,11 @@
+- hosts: mgmt
+  vars:
+    message: hello play
+  tasks:
+  - debug:
+      msg: "{{ message }}"
+  - debug:
+      msg: "{{ message }}"
+    vars:
+      message: hello task
+    
