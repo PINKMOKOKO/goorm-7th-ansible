@@ -1,0 +1,10 @@
+# Library: sudo apt install python3-netaddr
+
+- hosts: mgmt
+  vars:
+    ips: 192.168.56.21/24
+  tasks:
+  - debug:
+      msg: "{{ ips }}"
+  - debug:
+      msg: "{{ ips | ipaddr('address') }}"

@@ -1,0 +1,12 @@
+- hosts: mgmt
+  become: true
+  vars:
+    pwd: qwer1234
+  tasks:
+  - debug:
+      msg: "{{ pwd | password_hash('sha512', 65534 | random(seed=inventory_hostname) | string ) }}"
+  - user:
+      name: goorm
+      #password: $6$A/j3s/wnCj3ih1MA$vciKsBVCMG64G8hQxWRWqUVARR4b8co3NwXymKG6OvsLN2PfL2UltN7A0P2Wa.hN/meuy7ibhv8JYfGQI0zgX.
+      password: "{{ pwd | password_hash('sha512', 65534 | random(seed=inventory_hostname) | string ) }}"
+      state: present
