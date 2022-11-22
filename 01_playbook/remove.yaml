@@ -1,0 +1,20 @@
+- name: Remove Apache2
+  hosts: mgmt
+  become: true
+
+  tasks:
+  #- name: Stop Apache2 Service
+  #  service:
+  #    name: apache2
+  #    state: stopped
+  - name: Remove Web Contents
+    file:
+      path: /var/www/html
+      state: absent
+  - name: Remove Apache2 Package
+    apt:
+      name: apache2
+      state: absent
+      autoremove: true
+      purge: true
+
