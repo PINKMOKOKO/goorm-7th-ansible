@@ -1,0 +1,12 @@
+- hosts: mgmt
+  gather_facts: no
+  tasks:
+  - command: hostname
+    register: comm_result
+  - debug:
+      msg: "{{ comm_result.stdout }}"
+  - command: hostname
+    delegate_to: localhost
+    register: comm_result
+  - debug:
+      msg: "{{ comm_result.stdout }}"
