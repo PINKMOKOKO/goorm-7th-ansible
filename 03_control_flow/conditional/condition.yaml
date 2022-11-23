@@ -1,0 +1,17 @@
+- hosts: mgmt
+  gather_facts: yes
+  vars:
+    switch: true
+  tasks:
+  - debug:
+      msg: "Hello Condition"
+    when: switch
+  - debug:
+      msg: "Hello Condition"
+    when: not switch
+  - debug:
+      msg: "It's Ubuntu Linux"
+    when: ansible_distribution == "Ubuntu"
+  - debug:
+      msg: "It's CentOS Linux"
+    when: ansible_distribution == "CentOS"

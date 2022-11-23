@@ -1,0 +1,20 @@
+- hosts: mgmt
+  gather_facts: no
+  become: true
+
+  vars:
+    pkgs:
+      - apache2
+      - apache2-doc
+      - apache2-dev
+
+  tasks:
+  - apt:
+     name: "{{ pkgs }}"
+     state: present
+  - name: DO NOT
+    apt:
+      name: "{{ item }}"
+      state: present
+    loop:
+      - "{{ pkgs }}"
