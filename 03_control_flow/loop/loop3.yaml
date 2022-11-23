@@ -1,0 +1,10 @@
+- hosts: localhost
+  gather_facts: no
+
+  vars:
+    text_list: ['a', 'b', 'c']
+  tasks:
+  - debug:
+      msg: "{{ item }}"
+    loop: "{{ text_list }}"
+

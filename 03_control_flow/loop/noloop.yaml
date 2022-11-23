@@ -1,0 +1,19 @@
+- hosts: localhost
+  vars:
+    text_list:
+      - a
+      - b
+      - c
+  tasks:
+  #- debug:
+  #    msg: "a"
+  #- debug:
+  #    msg: "b"
+  #- debug:
+  #    msg: "c"
+  - debug:
+      msg: "{{ text_list[0] }}"
+  - debug:
+      msg: "{{ text_list[1] }}"
+  - debug:
+      msg: "{{ text_list[2] }}"
