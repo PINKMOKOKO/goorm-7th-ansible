@@ -1,0 +1,4 @@
+- hosts: locals
+  tasks:
+  - debug:
+      msg: "{{ message }}"

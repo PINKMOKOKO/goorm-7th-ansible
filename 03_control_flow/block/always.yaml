@@ -1,0 +1,15 @@
+- hosts: mgmt
+  tasks:
+  - block:
+      - name: T1
+        ping:
+      - name: T2
+        command: /bin/false
+      - name: T3
+        ping:
+    rescue:
+      - name: R1
+        ping:
+    always:
+      - name: A1
+        ping:

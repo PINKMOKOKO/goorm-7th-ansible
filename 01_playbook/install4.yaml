@@ -2,7 +2,6 @@
 - name: Install Web Server
   hosts: mgmt
   become: true
-  force_handlers: true
   vars_files:
     - variable.yaml
 
@@ -29,6 +28,8 @@
     copy:
       src: index.html
       dest: /var/www/html/index.html
+
+  post_tasks:
   - name: Access Check
     uri:
       url: "http://{{ hostvars[ lookup('inventory_hostnames', 'mgmt') ]['ansible_host'] }}:{{ web_port }}"
@@ -41,3 +42,6 @@
     service:
       name: apache2
       state: restarted
+
+...
+

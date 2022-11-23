@@ -3,10 +3,11 @@
   become: true
 
   tasks:
-  #- name: Stop Apache2 Service
-  #  service:
-  #    name: apache2
-  #    state: stopped
+  - name: Stop Apache2 Service
+    service:
+      name: apache2
+      state: stopped
+    ignore_errors: true
   - name: Remove Web Contents
     file:
       path: /var/www/html

@@ -1,0 +1,8 @@
+- hosts: mgmt
+  tasks:
+  - debug:
+      msg: "{{ message }}"
+    ignore_errors: true
+  - include_vars: vars.yaml
+  - debug:
+      msg: "{{ message }}"
