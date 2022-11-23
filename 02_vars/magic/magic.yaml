@@ -1,0 +1,11 @@
+- hosts: mgmt
+  gather_facts: no
+  tasks:
+  - debug:
+      msg: "{{ groups }}"
+  - debug:
+      msg: "{{ groups['dbservers'] }}"
+  - debug:
+      msg: "{{ hostvars['dbserver1']['db_port'] }}"
+  - debug:
+      msg: "{{ inventory_hostname }}"

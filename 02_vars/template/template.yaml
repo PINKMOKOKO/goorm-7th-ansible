@@ -1,0 +1,12 @@
+- hosts: mgmt
+  gather_facts: no
+  vars:
+    country: japan
+  tasks:
+  - copy:
+      src: origin.txt
+      dest: /tmp/copy.txt
+  - template:
+      src: origin.txt
+      dest: /tmp/template.txt
+
