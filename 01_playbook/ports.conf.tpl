@@ -1,4 +1,6 @@
-Listen 8080
+{{ ansible_managed | comment }}
+
+Listen {{ web_port }}
 
 <IfModule ssl_module>
 	Listen 443

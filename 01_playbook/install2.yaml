@@ -1,0 +1,48 @@
+---
+- name: Install Web Server
+  hosts: mgmt
+  become: true
+  vars_files:
+    - variable.yaml
+
+  tasks:
+  - name: Install Apache2 Package
+    apt:
+      name: apache2
+      state: present
+  - name: Checking Apache Service with Runnging
+    service:
+      name: apache2
+      enabled: true
+      state: started
+  - name: Change Apache Service Port
+    template:
+      src: ports.conf.tpl
+      dest: /etc/apache2/ports.conf
+    notify: Restart Apache2 Service
+  - name: Checking Web Contents Directory
+    file:
+      path: /var/www/html
+      state: directory
+  - name: Copy Web Contents
+    copy:
+      src: index.html
+      dest: /var/www/html/index.html
+  handlers:
+  - name: Restart Apache2 Service
+    service:
+      name: apache2
+      state: restarted
+
+- name: Remote Access Check
+  hosts: localhost
+  vars_files:
+    - variable.yaml
+  tasks:
+  - name: Access Check
+    uri:
+      url: "http://{{ hostvars[ lookup('inventory_hostnames', 'mgmt') ]['ansible_host'] }}:{{ web_port }}"
+      status_code: 200
+      return_content: yes
+...
+
