@@ -50,12 +50,26 @@
     path: /etc/apache2/sites-enabled/000-default.conf
     state: absent
 
+- name: Disable mpm_event Module for Apache2
+  apache2_module:
+    name: "{{ item }}"
+    state: absent
+  notify:
+  - Restart Apache2 Service
+  ignore_errors: yes
+  loop:
+  - mpm_event
+  - mpm_prefork
+
 - name: Enable Rewrite Module for Apache2
   apache2_module:
-    name: rewrite
+    name: "{{ item }}"
     state: present
   notify:
   - Restart Apache2 Service
+  loop:
+  - rewrite
+  - php7.4
 
 - name: Start/Enable Apache2 Service
   service:
