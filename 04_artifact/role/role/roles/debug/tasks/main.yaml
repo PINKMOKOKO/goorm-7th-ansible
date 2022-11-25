@@ -1,0 +1,13 @@
+- ping:
+- debug:
+    msg: "{{ message }}"
+- import_tasks: debug.yaml
+- copy:
+    src: copy.txt
+    dest: /tmp/copy.txt
+- template:
+    src: origin.txt.j2
+    dest: /tmp/template.txt
+- command: ls
+  notify:
+  - handler message
