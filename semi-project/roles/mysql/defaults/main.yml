@@ -1,0 +1,8 @@
+---
+# defaults file for roles/mysql
+
+mysql_packages: 
+  - mysql-server
+  - mysql-client
+  - python3-pymysql
+

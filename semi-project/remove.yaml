@@ -1,0 +1,25 @@
+- name: Remove Wordpress
+  gather_facts: no
+  hosts: wp_host
+  become: true
+
+  tasks:
+  - name: Stop Service
+    service:
+      name: "{{ item }}"
+      state: stopped
+    ignore_errors: true
+    loop:
+    - apache2
+    - mysql-server
+  - name: Remove Wordpress Contents
+    file:
+      path: "{{ wordpress_directory }}"
+      state: absent
+  - name: Remove Apache2 Package
+    apt:
+      name: ['apache2', 'php', 'mysql-server', 'mysql-client']
+      state: absent
+      autoremove: true
+      purge: true
+

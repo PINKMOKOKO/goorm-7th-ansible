@@ -1,0 +1,7 @@
+- hosts: wp_host
+  gather_facts: no
+  become: yes
+
+  roles:
+  - wordpress
+  - mysql
