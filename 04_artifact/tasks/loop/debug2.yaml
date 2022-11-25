@@ -1,0 +1,6 @@
+- name: DEBUGGING
+  debug:
+    msg: Hello Debug
+  loop:
+  - a
+  - b
