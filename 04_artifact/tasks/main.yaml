@@ -1,0 +1,11 @@
+- hosts: mgmt
+  gather_facts: no
+  tasks:
+  - name: TASK1 in main.yaml
+    debug:
+      msg: "Hello TASK1"
+  - include_tasks: debug.yaml
+  - import_tasks: debug.yaml
+  - name: TASK2 in main.yaml
+    debug:
+      msg: "Hello TASK2"

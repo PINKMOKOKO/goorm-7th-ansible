@@ -1,0 +1,7 @@
+- hosts: mgmt
+  tasks:
+  - command: ls
+    notify: HANDLER TASK
+
+  handlers:
+  - include_tasks: debug.yaml

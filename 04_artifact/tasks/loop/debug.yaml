@@ -1,0 +1,7 @@
+- name: DEBUGGING 1
+  debug:
+    msg: Hello Debugging 1
+
+- name: DEBUGGING 2
+  debug:
+    msg: Hello Debugging 2
