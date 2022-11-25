@@ -1,0 +1,24 @@
+- hosts: mgmt
+  pre_tasks:
+  - name: PRE TASK 1
+    command: ls
+    notify: HANDLER
+
+  roles:
+  - myrole
+
+  tasks:
+  - name: TASK 1
+    command: ls
+    notify: HANDLER
+
+  post_tasks:
+  - name: POST TASK 1
+    command: ls
+    notify: HANDLER
+
+  handlers:
+  - name: HANDLER
+    debug:
+      msg: "HANDLER"
+

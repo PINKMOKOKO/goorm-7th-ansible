@@ -1,0 +1,22 @@
+  - name: Install Apache2 Package
+    apt:
+      name: apache2
+      state: present
+  - name: Checking Apache Service with Runnging
+    service:
+      name: apache2
+      enabled: true
+      state: started
+  - name: Change Apache Service Port
+    template:
+      src: ports.conf.tpl
+      dest: /etc/apache2/ports.conf
+    notify: Restart Apache2 Service
+  - name: Checking Web Contents Directory
+    file:
+      path: /var/www/html
+      state: directory
+  - name: Copy Web Contents
+    copy:
+      src: index.html
+      dest: /var/www/html/index.html

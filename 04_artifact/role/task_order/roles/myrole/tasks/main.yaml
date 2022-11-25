@@ -1,0 +1,3 @@
+- name: ROLE TASK
+  command: ls
+  notify: ROLE HANDLER
