@@ -1,0 +1,23 @@
+- hosts: mgmt
+  vars_files:
+    - vars/web.yaml
+
+  tasks:
+  - ping:
+  - debug:
+      msg: "{{ message }}"
+  - import_tasks: tasks/debug.yaml
+  - copy:
+      src: files/copy.txt
+      dest: /tmp/copy.txt
+  - template:
+      src: files/origin.txt.j2
+      dest: /tmp/template.txt
+  - command: ls
+    notify:
+    - handler message
+
+  handlers:
+  - name: handler message
+    debug:
+      msg: "It's Handlers"
